@@ -8,6 +8,24 @@
   grid-template-columns: repeat(7, 1fr);
 }
 
+.calendar_cell {
+  width: 100px;
+  height: 40px;
+}
+
+.current_date {
+  width: 24px;
+  height: 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: red;
+  color: white;
+  border-radius: 100%;
+}
+
 .monday {
   grid-column-start: 1;
   grid-column-end: 2;

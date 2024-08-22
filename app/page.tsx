@@ -40,6 +40,7 @@ export default function Home() {
     setAllDaysCount(Array.from({length: DaysInMonth(new Date(date).getMonth(), new Date(date).getFullYear())}, (_, i) => i + 1))
     
   }, []);
+
   return (
     <main className={styles.main}>
       <div>
@@ -50,58 +51,123 @@ export default function Home() {
           (currentDayOfWeek) ? allDaysNames[currentDayOfWeek] : ""
         }
         {
-          <div className={styles.calendar_table}>
-            {
-              (allDaysCount && month && year) ?
-              allDaysCount.map((el, index) => {
-                switch (allDaysNames[DayOfWeek(month, year, el)]) {
-                  case "Monday": 
-                  return(
-                    <div className={`${styles.monday}`}>
-                      {el}
-                    </div>
-                  );
-                  case "Tuesday": 
-                  return(
-                    <div className={`${styles.tuesday}`}>
-                      {el}
-                    </div>
-                  );
-                  case "Wednesday": 
-                  return(
-                    <div className={`${styles.wednesday}`}>
-                      {el}
-                    </div>
-                  );
-                  case "Thursday": 
-                  return(
-                    <div className={`${styles.thursday}`}>
-                      {el}
-                    </div>
-                  );
-                  case "Friday": 
-                  return(
-                    <div className={`${styles.friday}`}>
-                      {el}
-                    </div>
-                  );
-                  case "Saturday": 
-                  return(
-                    <div className={`${styles.saturday}`}>
-                      {el}
-                    </div>
-                  );
-                  case "Sunday": 
-                  return(
-                    <div className={`${styles.sunday}`}>
-                      {el}
-                    </div>
-                  );
-                }
-                }
-              ) : ""
-            } 
-          </div>
+          <>
+            <div className={styles.calendar_table}>
+              {
+                allDaysNames.map(el => {
+                  switch (el) {
+                    case "Monday": 
+                    return(
+                      <div className={`${styles.monday} ${styles.calendar_cell}`}>
+                        {el}
+                      </div>
+                    );
+                    case "Tuesday": 
+                    return(
+                      <div className={`${styles.tuesday} ${styles.calendar_cell}`}>
+                        {el}
+                      </div>
+                    );
+                    case "Wednesday": 
+                    return(
+                      <div className={`${styles.wednesday} ${styles.calendar_cell}`}>
+                        {el}
+                      </div>
+                    );
+                    case "Thursday": 
+                    return(
+                      <div className={`${styles.thursday} ${styles.calendar_cell}`}>
+                        {el}
+                      </div>
+                    );
+                    case "Friday": 
+                    return(
+                      <div className={`${styles.friday} ${styles.calendar_cell}`}>
+                        {el}
+                      </div>
+                    );
+                    case "Saturday": 
+                    return(
+                      <div className={`${styles.saturday} ${styles.calendar_cell}`}>
+                        {el}
+                      </div>
+                    );
+                    case "Sunday": 
+                    return(
+                      <div className={`${styles.sunday} ${styles.calendar_cell}`}>
+                        {el}
+                      </div>
+                    );
+                  }
+                })
+              }
+            </div>
+            <div className={styles.calendar_table}>
+              {
+                (allDaysCount && month && year && currentDate) ?
+                allDaysCount.map((el, index) => {
+                  switch (allDaysNames[DayOfWeek(month, year, el)]) {
+                    case "Monday": 
+                    return(
+                      <div className={`${styles.monday} ${styles.calendar_cell}`}>
+                        {
+                          (new Date(currentDate).getDate() == el) ? <div className={styles.current_date}>{el}</div> : <div>{el}</div> 
+                        }
+                        
+                      </div>
+                    );
+                    case "Tuesday": 
+                    return(
+                      <div className={`${styles.tuesday} ${styles.calendar_cell}`}>
+                        {
+                          (new Date(currentDate).getDate() == el) ? <div className={styles.current_date}>{el}</div> : <div>{el}</div> 
+                        }
+                      </div>
+                    );
+                    case "Wednesday": 
+                    return(
+                      <div className={`${styles.wednesday} ${styles.calendar_cell}`}>
+                        {
+                          (new Date(currentDate).getDate() == el) ? <div className={styles.current_date}>{el}</div> : <div>{el}</div> 
+                        }
+                      </div>
+                    );
+                    case "Thursday": 
+                    return(
+                      <div className={`${styles.thursday} ${styles.calendar_cell}`}>
+                        {
+                          (new Date(currentDate).getDate() == el) ? <div className={styles.current_date}>{el}</div> : <div>{el}</div> 
+                        }
+                      </div>
+                    );
+                    case "Friday": 
+                    return(
+                      <div className={`${styles.friday} ${styles.calendar_cell}`}>
+                        {
+                          (new Date(currentDate).getDate() == el) ? <div className={styles.current_date}>{el}</div> : <div>{el}</div> 
+                        }
+                      </div>
+                    );
+                    case "Saturday": 
+                    return(
+                      <div className={`${styles.saturday} ${styles.calendar_cell}`}>
+                        {
+                          (new Date(currentDate).getDate() == el) ? <div className={styles.current_date}>{el}</div> : <div>{el}</div> 
+                        }
+                      </div>
+                    );
+                    case "Sunday": 
+                    return(
+                      <div className={`${styles.sunday} ${styles.calendar_cell}`}>
+                        {el}
+                      </div>
+                    );
+                  }
+                  }
+                ) : ""
+              } 
+            </div>
+          </>
         }
       </div>
       <Sidebar />
