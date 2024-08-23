@@ -18,6 +18,8 @@ export default function Home() {
   const allMonthsNames : string[] = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   const allDaysNames : string[] = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
+  const allDaysOrder = [ "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];;
+
   const [allDaysCount, setAllDaysCount] = useState<number[]>();
 
   const [currentDate, setCurrentDate] = useState<number>();
@@ -54,7 +56,7 @@ export default function Home() {
           <>
             <div className={styles.calendar_table}>
               {
-                allDaysNames.map(el => {
+                allDaysOrder.map(el => {
                   switch (el) {
                     case "Monday": 
                     return(

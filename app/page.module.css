@@ -11,6 +11,8 @@
 .calendar_cell {
   width: 100px;
   height: 40px;
+
+  border: 1px solid black;
 }
 
 .current_date {
